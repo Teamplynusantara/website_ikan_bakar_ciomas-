@@ -6,7 +6,7 @@
    kontainer kosong, semua DOM di-render dari sini.
    ============================================================ */
 
-const FALLBACK_IMG = 'asset/gurame-bakar.jpg';
+const FALLBACK_IMG = 'asset/ikan-gurame-bakar.jpg';
 
 const categoriesData = [
   { id: 'semua', label: 'Semua' },
@@ -19,37 +19,37 @@ const heroData = {
   titleB: 'Setiap Hari.',
   description:
     'Dibakar di atas arang batok dengan bumbu rempah khas Nusantara. Pilih gurame, mujaer, kakap, atau kerapu favoritmu. Level pedas bebas request.',
-  image: 'asset/gurame-bakar.jpg',
+  image: 'asset/ikan-gurame-bakar.jpg',
 };
 
 const bannersData = [
   {
     id: 'b1',
     tag: 'Ikan Utuh',
-    title: 'Gurame Bakar Spesial',
-    desc: 'Ikan utuh di atas daun pisang, sambal bebas pilih.',
-    image: 'asset/gurame-bakar.jpg',
+    title: 'Ikan Gurame Bakar',
+    desc: 'Ikan utuh dibakar bumbu kecap, sambal bebas pilih.',
+    image: 'asset/ikan-gurame-bakar.jpg',
   },
   {
     id: 'b2',
     tag: 'Manis Gurih',
-    title: 'Kerapu Bakar Manis Pedas',
+    title: 'Ikan Kerapu Bakar Manis Pedas',
     desc: 'Daging kenyal juicy, bumbu meresap pekat.',
-    image: 'asset/kerapu-bakar-manis-pedas.jpg',
+    image: 'asset/ikan-kerapu-bakar-manis-pedas.jpg',
   },
   {
     id: 'b3',
     tag: 'Bebas Request',
-    title: 'Mujaer Manis Pedas',
+    title: 'Ikan Mujaer Bakar Manis Pedas',
     desc: 'Tiga sambal dalam satu mangkok.',
-    image: 'asset/mujaer-bakar-manis-pedas-2.jpg',
+    image: 'asset/ikan-mujaer-bakar-manis-pedas.jpg',
   },
 ];
 
 const tutorialData = [
   {
     title: 'Pilih Menu',
-    desc: 'Telusuri katalog, klik card ikan untuk atur bumbu bakar, sambal cocolan, add-on, dan jumlah porsi.',
+    desc: 'Telusuri katalog, klik card ikan untuk mengatur jumlah porsi yang mau dibakar.',
   },
   {
     title: 'Checkout via WhatsApp',
@@ -57,7 +57,7 @@ const tutorialData = [
   },
   {
     title: 'Konfirmasi Warung',
-    desc: 'Tunggu balasan WhatsApp dari warung untuk konfirmasi ketersediaan ikan dan total pembayaran.',
+    desc: 'Tunggu balasan WhatsApp dari warung untuk konfirmasi ketersediaan ikan dan detail pesanan.',
   },
   {
     title: 'Pesan GoSend / Kurir',
@@ -65,7 +65,7 @@ const tutorialData = [
   },
   {
     title: 'Terima & Nikmati',
-    desc: 'Sebutkan nama pemesan ke kurir saat pengambilan. Sajikan selagi hangat!',
+    desc: 'Kurir akan menjemput pesanan ke warung. Sajikan ikan bakar selagi hangat!',
   },
 ];
 
@@ -85,100 +85,82 @@ const locationData = {  name: 'Ikan Bakar Segar Ciomas',
   query: 'Ikan Bakar Segar Ciomas, Jl. Cemara VIII, Ciomas, Bogor',
 };
 
-const bumbuVariants = [  { id: 'kecap', label: 'Kecap Manis Gurih', desc: 'Olesan kecap manis + bawang, gurih klasik.', extra: 0 },
-  { id: 'rica', label: 'Rica-Rica Pedas', desc: 'Cabai merah, jahe & kemangi. Nampol.', extra: 2000 },
-  { id: 'madu', label: 'Madu Bakar', desc: 'Olesan madu murni, manis karamel.', extra: 5000 },
-  { id: 'padang', label: 'Bumbu Padang', desc: 'Santan kental + cabai giling khas Minang.', extra: 4000 },
-];
-
-const sambalOptions = [
-  { id: 'terasi', label: 'Sambal Terasi', desc: 'Pedas gurih klasik' },
-  { id: 'dabu', label: 'Sambal Dabu-Dabu', desc: 'Segar tomat & jeruk nipis' },
-  { id: 'matah', label: 'Sambal Matah', desc: 'Bawang + serai + minyak kelapa' },
-  { id: 'kecap-pedas', label: 'Sambal Kecap Pedas', desc: 'Kecap manis + rawit iris' },
-];
-
-const addonOptions = [
-  { id: 'nasi', label: 'Extra Nasi Putih', desc: 'Nasi pulen 1 porsi', price: 5000 },
-  { id: 'tahu-tempe', label: 'Tahu & Tempe Goreng', desc: '5 potong, gurih renyah', price: 6000 },
-  { id: 'es-teh', label: 'Es Teh Manis', desc: 'Teh melati jumbo', price: 5000 },
-];
-
-/* Metode pembayaran di keranjang: 3 tema utama.
-   Tambah tema cukup tambahkan objek baru di array ini. */
-const paymentThemesData = [
-  {
-    id: 'bank',
-    label: 'Bank',
-    hint: 'Transfer ke rekening warung (BCA / BRI / Mandiri), kirim bukti setelah transfer.',
-  },
-  {
-    id: 'qris',
-    label: 'QRIS',
-    hint: 'Scan kode QRIS warung pakai aplikasi bank atau e-wallet apa pun.',
-  },
-  {
-    id: 'tunai',
-    label: 'Tunai',
-    hint: 'Bayar tunai di kasir saat ambil pesanan.',
-  },
-];
-
 const menuIkanBakarData = [
   {
-    id: 'g-gurame', name: 'Gurame Bakar', category: 'air-tawar',
-    price: 45000, time: '25-30 mnt', weight: '±600 gr / ekor',
-    spiceTag: 'Bumbu Kecap', badge: null, customizable: true,
-    image: 'asset/gurame-bakar.jpg',
-    description: 'Gurame utuh disajikan di atas daun pisang dengan olesan bumbu kecap gurih yang dikaramelisasi di atas bara. Dilengkapi dua sambal: terasi pedas dan dabu-dabu segar, plus lalapan.',
+    id: 'g-gurame', name: 'Ikan Gurame Bakar', category: 'air-tawar',
+    time: '25-30 mnt', weight: '±600 gr / ekor',
+    spiceTag: 'Bumbu Kecap', badge: null,
+    image: 'asset/ikan-gurame-bakar.jpg',
+    description: 'Gurame utuh dibakar dengan olesan bumbu kecap gurih yang dikaramelisasi di atas bara. Disajikan dengan sambal dabu-dabu, sambal merah, timun, dan kemangi segar.',
   },
   {
-    id: 'g-mujaer', name: 'Mujaer Bakar Manis Pedas', category: 'air-tawar',
-    price: 25000, time: '20-25 mnt', weight: '±400 gr / ekor',
-    spiceTag: 'Bumbu Manis Pedas', badge: 'Pedas', customizable: true,
-    image: 'asset/mujaer-bakar-manis-pedas-1.jpg',
+    id: 'g-gurame-mp', name: 'Ikan Gurame Bakar Manis Pedas', category: 'air-tawar',
+    time: '25-30 mnt', weight: '±600 gr / ekor',
+    spiceTag: 'Bumbu Manis Pedas', badge: null,
+    image: 'asset/ikan-gurame-bakar-manis-pedas.jpg',
+    description: 'Gurame utuh berbalut bumbu manis pedas yang meresap hingga ke daging. Dilengkapi mangkok tiga sekat berisi sambal dabu-dabu, sambal kecap, dan sambal terasi plus lalapan.',
+  },
+  {
+    id: 'g-mujaer', name: 'Ikan Mujaer Bakar Manis Pedas', category: 'air-tawar',
+    time: '20-25 mnt', weight: '±400 gr / ekor',
+    spiceTag: 'Bumbu Manis Pedas', badge: 'Pedas',
+    image: 'asset/ikan-mujaer-bakar-manis-pedas.jpg',
     description: 'Mujaer segar berbalut bumbu manis pedas yang meresap hingga ke daging. Disajikan dengan mangkok tiga sekat berisi sambal dabu-dabu, sambal kecap, dan sambal terasi.',
   },
   {
-    id: 'l-bawal', name: 'Bawal Bakar Manis Pedas', category: 'laut',
-    price: 32000, time: '20-25 mnt', weight: '±350 gr / ekor',
-    spiceTag: 'Bumbu Manis Pedas', badge: null, customizable: true,
-    image: 'asset/bawal-bakar-manis-pedas.jpg',
+    id: 'g-mujair', name: 'Ikan Mujair Bakar', category: 'air-tawar',
+    time: '20 mnt', weight: '±400 gr / ekor',
+    spiceTag: 'Bumbu Kecap', badge: null,
+    image: 'asset/ikan-mujair-bakar.jpg',
+    description: 'Mujair dibakar dengan bumbu kecap hitam mengilap yang lengket manis di kulitnya. Cocok pencinta ikan gurih-gelap, disajikan dengan sambal dabu-dabu, timun, kemangi, dan jeruk nipis.',
+  },
+  {
+    id: 'g-mujair-goreng', name: 'Ikan Mujair Goreng', category: 'air-tawar',
+    time: '15-20 mnt', weight: '±400 gr / ekor',
+    spiceTag: 'Bumbu Ungkep', badge: null,
+    image: 'asset/ikan-mujair-goreng.jpg',
+    description: 'Mujair digoreng garing renyah sampai tulangnya ikut renyah. Disajikan dengan sambal dabu-dabu, sambal merah, irisan timun, kemangi, dan jeruk nipis.',
+  },
+  {
+    id: 'l-bawal', name: 'Bawal Laut Bakar Manis Pedas', category: 'laut',
+    time: '20-25 mnt', weight: '±350 gr / ekor',
+    spiceTag: 'Bumbu Manis Pedas', badge: null,
+    image: 'asset/bawal-laut-bakar-manis-pedas.jpg',
     description: 'Bawal pipih berdaging tebal dengan olesan bumbu manis pedas yang garing karamel. Disertai lalapan segar, sambal dabu-dabu, sambal terasi, dan jeruk nipis.',
   },
   {
+    id: 'l-kembung', name: 'Ikan Kembung Bakar', category: 'laut',
+    time: '20 mnt', weight: '±300 gr / ekor',
+    spiceTag: 'Bumbu Kecap', badge: null,
+    image: 'asset/ikan-kembung-bakar.jpg',
+    description: 'Kembung segar dibakar bumbu kecap dengan aroma bakaran yang wangi. Dagingnya padat dan manis, disajikan dengan sambal dabu-dabu, timun, selada, dan jeruk nipis.',
+  },
+  {
     id: 'l-ikuwe', name: 'Ikan Kuwe Bakar', category: 'laut',
-    price: 35000, time: '20 mnt', weight: '±400 gr / ekor',
-    spiceTag: 'Bumbu Kecap', badge: null, customizable: true,
+    time: '20 mnt', weight: '±400 gr / ekor',
+    spiceTag: 'Bumbu Kecap', badge: null,
     image: 'asset/ikan-kuwe-bakar.jpg',
-    description: 'Kuwe hasil tangkapan nelayan dibakar dengan olesan kecap gurih. Dagingnya padat dan manis, disajikan dengan sambal dabu-dabu, kemangi, dan timun segar.',
+    description: 'Kuwe hasil tangkapan nelayan dibakar dengan olesan kecap gurih. Dagingnya padat dan manis, disajikan dengan sambal dabu-dabu, sambal merah, kemangi, dan timun segar.',
   },
   {
-    id: 'l-kuwe', name: 'Kuwe Bakar', category: 'laut',
-    price: 33000, time: '20 mnt', weight: '±350 gr / ekor',
-    spiceTag: 'Bumbu Kecap', badge: null, customizable: true,
-    image: 'asset/kuwe-bakar.jpg',
-    description: 'Kuwe bakar bumbu kecap keemasan dengan aroma bakaran yang wangi. Sambal dabu-dabu dan sambal terasi disajikan terpisah dengan irisan lemon segar.',
+    id: 'l-kuwe-mp', name: 'Kuwe Bakar Pedas Manis', category: 'laut',
+    time: '20-25 mnt', weight: '±350 gr / ekor',
+    spiceTag: 'Bumbu Manis Pedas', badge: null,
+    image: 'asset/kuwe-bakar-pedas-manis.jpg',
+    description: 'Kuwe pipih berbumbu manis pedas dengan lapisan karamel yang gurih. Dilengkapi sambal dabu-dabu, sambal merah, selada, timun, dan jeruk nipis.',
   },
   {
-    id: 'l-kakap', name: 'Kakap Bakar', category: 'laut',
-    price: 55000, time: '25-30 mnt', weight: '±500 gr / ekor',
-    spiceTag: 'Bumbu Rica-Rica', badge: null, customizable: true,
-    image: 'asset/kakap-bakar.jpg',
-    description: 'Kakap merah berdaging putih tebal dibalur bumbu merah pedas hingga meresap. Disajikan dengan sambal terasi, lalapan segar, jeruk nipis, dan bawang merah.',
+    id: 'l-kakap', name: 'Kakap Original', category: 'laut',
+    time: '25-30 mnt', weight: '±500 gr / ekor',
+    spiceTag: 'Bumbu Bakar Original', badge: null,
+    image: 'asset/kakap-original.jpg',
+    description: 'Kakap dibakar polos di atas bara tanpa baluran bumbu tebal, jadi rasa manis alami dagingnya yang menonjol. Disajikan dengan sambal bawang, sambal dabu-dabu, timun, kemangi, dan jeruk nipis.',
   },
   {
-    id: 'l-kuwemp', name: 'Kuwe Bakar Manis Pedas', category: 'laut',
-    price: 35000, time: '20-25 mnt', weight: '±350 gr / ekor',
-    spiceTag: 'Bumbu Manis Pedas', badge: null, customizable: true,
-    image: 'asset/kuwe-bakar-manis-pedas.jpg',
-    description: 'Kuwe pipih berbumbu manis pedas dengan lapisan karamel yang gurih. Dilengkapi sambal merah, sambal dabu-dabu, lalapan, dan jeruk nipis.',
-  },
-  {
-    id: 'l-kerapu', name: 'Kerapu Bakar Manis Pedas', category: 'laut',
-    price: 68000, time: '30 mnt', weight: '±600 gr / ekor',
-    spiceTag: 'Bumbu Manis Pedas', badge: null, customizable: true,
-    image: 'asset/kerapu-bakar-manis-pedas.jpg',
+    id: 'l-kerapu', name: 'Ikan Kerapu Bakar Manis Pedas', category: 'laut',
+    time: '30 mnt', weight: '±600 gr / ekor',
+    spiceTag: 'Bumbu Manis Pedas', badge: null,
+    image: 'asset/ikan-kerapu-bakar-manis-pedas.jpg',
     description: 'Kerapu berdaging kenyal juicy dengan baluran bumbu pekat manis pedas. Disajikan mewah dengan dua mangkok sambal: terasi dan dabu-dabu segar.',
   },
 ];
@@ -189,19 +171,10 @@ const state = {
   searchQuery: '',
   cart: new Map(),
   modal: null,
-  payTheme: 'bank',
 };
 
 /* ---------------- Helpers ---------------- */
 const $ = (selector) => document.querySelector(selector);
-
-const rupiah = (value) =>
-  new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(value);
 
 const categoryLabel = (id) => {
   const found = categoriesData.find((c) => c.id === id);
@@ -210,15 +183,6 @@ const categoryLabel = (id) => {
 
 const getProduct = (id) => menuIkanBakarData.find((p) => p.id === id);
 const isSoldOut = (id) => soldOutIds.includes(id);
-
-const getPaymentTheme = (id) => paymentThemesData.find((t) => t.id === id) || paymentThemesData[0];
-
-/* Ganti teks petunjuk pembayaran sesuai tema yang dipilih. */
-function renderPayHint() {
-  const theme = getPaymentTheme(state.payTheme);
-  const hint = $('#payHint');
-  if (hint) hint.textContent = theme.hint;
-}
 
 /* Status buka dihitung dari jam device dalam zona Asia/Jakarta. */
 function minutesNowWIB() {
@@ -244,11 +208,6 @@ const openStatusText = () =>
   isOpenNow()
     ? `Buka sekarang · tutup ${locationData.hours.close.replace(':', '.')}`
     : `Tutup · buka ${locationData.hours.open.replace(':', '.')}`;
-const getBumbu = (id) => bumbuVariants.find((b) => b.id === id);
-const getSambal = (id) => sambalOptions.find((s) => s.id === id);
-const getAddon = (id) => addonOptions.find((a) => a.id === id);
-
-const extraLabel = (extra) => (extra > 0 ? ` <small>+${rupiah(extra)}</small>` : '');
 
 
 /* Klik-ke-chat WhatsApp. Default-nya ke APLIKASI, bukan WhatsApp Web:
@@ -447,7 +406,6 @@ function cardHTML(p) {
         <span>${p.weight}</span>
       </div>
       <div class="card__foot">
-        <span class="card__price">${rupiah(p.price)}</span>
         <button class="card__add" type="button" data-add="${p.id}"${soldOut ? ' disabled' : ''}>${soldOut ? 'Habis' : '+ Tambah'}</button>
       </div>
     </div>
@@ -521,91 +479,16 @@ function renderCatalog() {
     .join('');
 }
 
-/* ---------------- Modal option groups ---------------- */
-function renderModalOptions() {
-  const box = $('#modalOptions');
-  const m = state.modal;
-  const p = getProduct(m.productId);
-  if (!p || !p.customizable) {
-    box.innerHTML = '';
-    return;
-  }
-
-  const bumbuBtns = bumbuVariants
-    .map(
-      (b) => `
-    <button class="opt-chip${b.id === m.bumbuId ? ' opt-chip--active' : ''}"
-      type="button" data-bumbu="${b.id}" aria-pressed="${b.id === m.bumbuId}">${b.label}${extraLabel(b.extra)}</button>`
-    )
-    .join('');
-
-  const sambalBtns = sambalOptions
-    .map(
-      (s) => `
-    <button class="opt-chip${s.id === m.sambalId ? ' opt-chip--active' : ''}"
-      type="button" data-sambal="${s.id}" aria-pressed="${s.id === m.sambalId}">${s.label}</button>`
-    )
-    .join('');
-
-  const addonRows = addonOptions
-    .map((a) => {
-      const active = m.addonIds.includes(a.id);
-      return `
-    <div class="opt-check${active ? ' opt-check--active' : ''}" role="checkbox"
-      aria-checked="${active}" tabindex="0" data-addon="${a.id}">
-      <span class="opt-check__box" aria-hidden="true">${active ? '✓' : ''}</span>
-      <span class="opt-check__text">
-        <span class="opt-check__name">${a.label}</span>
-        <span class="opt-check__desc">${a.desc}</span>
-      </span>
-      <span class="opt-check__price">+${rupiah(a.price)}</span>
-    </div>`;
-    })
-    .join('');
-
-  const bumbuDesc = getBumbu(m.bumbuId).desc;
-  const sambalDesc = getSambal(m.sambalId).desc;
-
-  box.innerHTML = `
-    <div class="opt">
-      <h4 class="opt__title">Varian Bumbu Bakar</h4>
-      <p class="opt__hint">${bumbuDesc}</p>
-      <div class="opt__chips">${bumbuBtns}</div>
-    </div>
-    <div class="opt">
-      <h4 class="opt__title">Sambal Cocolan</h4>
-      <p class="opt__hint">${sambalDesc}</p>
-      <div class="opt__chips">${sambalBtns}</div>
-    </div>
-    <div class="opt">
-      <h4 class="opt__title">Add-on / Pelengkap <small>· boleh pilih lebih dari satu</small></h4>
-      <div class="opt__list">${addonRows}</div>
-    </div>`;
-}
-
-function modalUnitPrice() {
-  const m = state.modal;
-  const p = getProduct(m.productId);
-  let unit = p.price;
-  if (p.customizable) {
-    unit += getBumbu(m.bumbuId).extra;
-    m.addonIds.forEach((id) => { unit += getAddon(id).price; });
-  }
-  return unit;
-}
-
+/* ---------------- Modal ---------------- */
 function updateModalFooter() {
   const m = state.modal;
   if (!m) return;
   const p = getProduct(m.productId);
-  const unit = modalUnitPrice();
   const soldOut = isSoldOut(p.id);
   $('#qtyVal').textContent = String(m.qty);
   $('#qtyMinus').disabled = m.qty <= 1;
-  $('#modalBasePrice').textContent = `Harga dasar: ${rupiah(p.price)}`;
-  $('#modalUnit').innerHTML = `${rupiah(unit)} / porsi${m.qty > 1 ? `<br />${m.qty} porsi` : ''}`;
   const cta = $('#modalCta');
-  cta.textContent = soldOut ? 'Habis Hari Ini' : `Tambah ke Keranjang - ${rupiah(unit * m.qty)}`;
+  cta.textContent = soldOut ? 'Habis Hari Ini' : 'Tambah ke Keranjang';
   cta.disabled = soldOut;
 }
 
@@ -614,9 +497,6 @@ function openModal(productId) {
   if (!p) return;
   state.modal = {
     productId,
-    bumbuId: 'kecap',
-    sambalId: 'terasi',
-    addonIds: [],
     qty: 1,
   };
 
@@ -635,9 +515,7 @@ function openModal(productId) {
   $('#modalTime').textContent = `Bakar ${p.time}`;
   $('#modalWeight').textContent = p.weight;
   $('#modalDesc').textContent = p.description;
-  $('#modalNote').value = '';
 
-  renderModalOptions();
   updateModalFooter();
 
   const overlay = $('#modalOverlay');
@@ -663,12 +541,6 @@ function cartCount() {
   return n;
 }
 
-function cartTotal() {
-  let total = 0;
-  state.cart.forEach((item) => { total += item.unitPrice * item.qty; });
-  return total;
-}
-
 function updateCartBadge() {
   const badge = $('#cartBadge');
   const n = cartCount();
@@ -677,35 +549,23 @@ function updateCartBadge() {
   $('#cartSub').textContent = `${n} item`;
 }
 
-function variantSummary(item) {
-  const parts = [];
-  if (item.bumbuId) parts.push(getBumbu(item.bumbuId).label);
-  if (item.sambalId) parts.push(getSambal(item.sambalId).label);
-  item.addonIds.forEach((id) => parts.push(`+${getAddon(id).label}`));
-  return parts.join(' · ');
-}
-
 function renderCart() {
   const box = $('#cartItems');
   updateCartBadge();
   if (state.cart.size === 0) {
     box.innerHTML = `<p class="cart-empty">Keranjang masih kosong.<br />Yuk pilih ikan bakarmu!</p>`;
-    $('#cartTotal').textContent = rupiah(0);
     return;
   }
   box.innerHTML = [...state.cart.entries()]
     .map(([key, item]) => {
       const p = getProduct(item.productId);
       if (!p) return '';
-      const variant = variantSummary(item);
       return `
       <div class="cart-item">
         <img class="cart-item__img" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'" />
         <div class="cart-item__info">
           <p class="cart-item__name">${p.name}</p>
-          ${variant ? `<p class="cart-item__variant">${variant}</p>` : ''}
-          ${item.note ? `<p class="cart-item__note">“${item.note}”</p>` : ''}
-          <p class="cart-item__price">${rupiah(item.unitPrice * item.qty)}</p>
+          <p class="cart-item__qtytext">${item.qty} ekor</p>
         </div>
         <div class="cart-item__qty">
           <button type="button" data-cart-minus="${key}" aria-label="Kurangi">−</button>
@@ -715,11 +575,6 @@ function renderCart() {
       </div>`;
     })
     .join('');
-  $('#cartTotal').textContent = rupiah(cartTotal());
-}
-
-function makeCartKey(productId, bumbuId, sambalId, addonIds, note) {
-  return [productId, bumbuId || '-', sambalId || '-', [...addonIds].sort().join('+'), (note || '').trim().toLowerCase()].join('|');
 }
 
 function openCart() {
@@ -733,27 +588,6 @@ function closeCart() {
   $('#cartOverlay').classList.remove('cart-overlay--open');
   $('#cartOverlay').setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
-}
-
-/* ---------------- Buyer form ---------------- */
-function readBuyer() {
-  const mark = (id, bad) => {
-    const input = $(id);
-    const field = input ? input.closest('.buyer__field') : null;
-    if (field) field.classList.toggle('buyer__field--error', bad);
-  };
-  const name = $('#buyerName').value.trim();
-  const picked = document.querySelector('input[name="buyerMethod"]:checked');
-  const method = picked ? picked.value : 'ambil';
-  mark('#buyerName', false);
-  if (name.length < 2) {
-    mark('#buyerName', true);
-    return { ok: false, error: 'Isi nama pemesan dulu ya', selector: '#buyerName' };
-  }
-
-  /* Tema pembayaran (tanpa sub-tema) */
-  const theme = getPaymentTheme(state.payTheme);
-  return { ok: true, name, method, payment: theme.label };
 }
 
 /* ---------------- Events ---------------- */
@@ -839,40 +673,6 @@ function bindEvents() {
     if (e.target === $('#modalOverlay')) closeModal();
   });
 
-  $('#modalOptions').addEventListener('click', (e) => {
-    if (!state.modal) return;
-    const bumbuBtn = e.target.closest('[data-bumbu]');
-    if (bumbuBtn) {
-      state.modal.bumbuId = bumbuBtn.dataset.bumbu;
-      renderModalOptions();
-      updateModalFooter();
-      return;
-    }
-    const sambalBtn = e.target.closest('[data-sambal]');
-    if (sambalBtn) {
-      state.modal.sambalId = sambalBtn.dataset.sambal;
-      renderModalOptions();
-      updateModalFooter();
-      return;
-    }
-    const addonRow = e.target.closest('[data-addon]');
-    if (addonRow) {
-      const id = addonRow.dataset.addon;
-      const idx = state.modal.addonIds.indexOf(id);
-      if (idx >= 0) state.modal.addonIds.splice(idx, 1);
-      else state.modal.addonIds.push(id);
-      renderModalOptions();
-      updateModalFooter();
-    }
-  });
-
-  $('#modalOptions').addEventListener('keydown', (e) => {
-    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-addon]')) {
-      e.preventDefault();
-      e.target.click();
-    }
-  });
-
   $('#qtyMinus').addEventListener('click', () => {
     if (state.modal && state.modal.qty > 1) {
       state.modal.qty -= 1;
@@ -890,22 +690,11 @@ function bindEvents() {
     if (!state.modal) return;
     const m = state.modal;
     const p = getProduct(m.productId);
-    const note = $('#modalNote').value.trim();
-    const unit = modalUnitPrice();
-    const key = makeCartKey(p.id, p.customizable ? m.bumbuId : null, p.customizable ? m.sambalId : null, p.customizable ? m.addonIds : [], note);
-    const existing = state.cart.get(key);
+    const existing = state.cart.get(p.id);
     if (existing) {
       existing.qty += m.qty;
     } else {
-      state.cart.set(key, {
-        productId: p.id,
-        bumbuId: p.customizable ? m.bumbuId : null,
-        sambalId: p.customizable ? m.sambalId : null,
-        addonIds: p.customizable ? [...m.addonIds] : [],
-        note,
-        qty: m.qty,
-        unitPrice: unit,
-      });
+      state.cart.set(p.id, { productId: p.id, qty: m.qty });
     }
     renderCart();
     closeModal();
@@ -914,29 +703,11 @@ function bindEvents() {
 
   $('#cartBtn').addEventListener('click', openCart);
   $('#cartClose').addEventListener('click', closeCart);
-  document.querySelectorAll('input[name="buyerMethod"]').forEach((radio) => {
-    radio.addEventListener('change', () => {
-      document.querySelectorAll('.buyer__method').forEach((label) => {
-        label.classList.toggle('buyer__method--active', !!(label.control && label.control.checked));
-      });
-    });
-  });
-
-  document.querySelectorAll('input[name="payTheme"]').forEach((radio) => {
-    radio.addEventListener('change', () => {
-      const theme = getPaymentTheme(radio.value);
-      state.payTheme = theme.id;
-      document.querySelectorAll('input[name="payTheme"]').forEach((input) => {
-        const label = input.closest('.buyer__method');
-        if (label) label.classList.toggle('buyer__method--active', input.checked);
-      });
-      renderPayHint();
-    });
-  });
   $('#cartTutorialBtn').addEventListener('click', () => {
     closeCart();
     setTimeout(() => $('#tutorial').scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
-  });  $('#cartOverlay').addEventListener('click', (e) => {
+  });
+  $('#cartOverlay').addEventListener('click', (e) => {
     if (e.target === $('#cartOverlay')) closeCart();
   });
 
@@ -961,47 +732,18 @@ function bindEvents() {
       showToast('Keranjang masih kosong');
       return;
     }
-    const buyer = readBuyer();
-    if (!buyer.ok) {
-      showToast(buyer.error);
-      const bad = $(buyer.selector);
-      if (bad) bad.focus({ preventScroll: false });
-      return;
-    }
     const rule = '-'.repeat(38);
-    const wrapText = (text, indent) => {
-      const out = [];
-      let cur = '';
-      text.split(' ').forEach((word) => {
-        if (`${cur} ${word}`.trim().length > 34) {
-          out.push(cur.trim());
-          cur = word;
-        } else {
-          cur += ` ${word}`;
-        }
-      });
-      if (cur.trim()) out.push(cur.trim());
-      return out.map((line) => indent + line);
-    };
     const lines = [
       `Halo ${locationData.name}! Saya mau pesan:`,
-      `Nama: ${buyer.name}`,
-      `Bayar: ${buyer.payment}`,
-      buyer.method === 'antar' ? 'Diambil oleh kurir' : 'Ambil di tempat',
       '```', rule];
     let num = 0;
     state.cart.forEach((item) => {
       const p = getProduct(item.productId);
       if (!p) return;
       num += 1;
-      lines.push(`${num}.  ${p.name}`);
-      const variant = variantSummary(item).split(' · ').join(', ');
-      if (variant) lines.push(...wrapText(variant, '    '));
-      lines.push(`    ${item.qty} x ${rupiah(item.unitPrice)} = ${rupiah(item.unitPrice * item.qty)}`);
-      if (item.note) lines.push(...wrapText(`Catatan: ${item.note}`, '    '));
-      lines.push(rule);
+      lines.push(`${num}.  ${p.name}`, `    ${item.qty} ekor`, rule);
     });
-    lines.push(`TOTAL ITEM  : ${cartCount()}`, `TOTAL BAYAR : ${rupiah(cartTotal())}`, rule, '```');
+    lines.push(`TOTAL ITEM: ${cartCount()}`, '```');
     if (!isOpenNow()) {
       lines.push(`Catatan: pesanan dibuat di luar jam buka (${locationData.hours.label}). Mohon konfirmasi ketersediaan saat warung buka.`);
     }
@@ -1052,7 +794,6 @@ function init() {
     renderLocation();
     renderTutorial();
     renderCart();
-    renderPayHint();
     show(errorBox, false);
   } catch (err) {
     const catalog = $('#catalog');
