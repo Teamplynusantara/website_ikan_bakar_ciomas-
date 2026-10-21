@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ikanbakarsegarciomas.id/sitemap.xml
+Sitemap: https://ikanbakarsegarciomas.com/sitemap.xml
