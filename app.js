@@ -15,7 +15,7 @@ const categoriesData = [
 ];
 
 const heroData = {
-  titleA: 'Ikan Bakar Segar',
+  titleA: 'Ikan Bakar &ldquo;Segar&rdquo;',
   titleB: 'Setiap Hari.',
   description:
     'Dibakar di atas arang batok dengan bumbu rempah khas Nusantara. Pilih gurame, mujaer, kakap, atau kerapu favoritmu. Level pedas bebas request.',
