@@ -702,14 +702,29 @@ function bindEvents() {
       showToast('Keranjang masih kosong');
       return;
     }
-    /* Buka chat WhatsApp tanpa teks pesan otomatis — pelanggan menulis sendiri. */
-    const waUrl = waLink('');
+    const rule = '-'.repeat(38);
+    const lines = [
+      `Halo ${locationData.name}! Saya mau pesan:`,
+      '```', rule];
+    let num = 0;
+    state.cart.forEach((item) => {
+      const p = getProduct(item.productId);
+      if (!p) return;
+      num += 1;
+      lines.push(`${num}.  ${p.name}`, `    ${item.qty} ekor`, rule);
+    });
+    lines.push(`TOTAL ITEM: ${cartCount()}`, '```');
+    if (!isOpenNow()) {
+      lines.push(`Catatan: pesanan dibuat di luar jam buka (${locationData.hours.label}). Mohon konfirmasi ketersediaan saat warung buka.`);
+    }
+    lines.push('Terima kasih!');
+    const waUrl = waLink(lines.join('\n'));
     const count = cartCount();
     window.open(waUrl, '_blank', 'noopener');
     state.cart.clear();
     renderCart();
     closeCart();
-    showToast(`Keranjang ${count} item dikosongkan. Lanjutkan pesan di WhatsApp.`);
+    showToast(`Pesanan ${count} item diteruskan ke WhatsApp. Pesan GoSend untuk pengambilan!`);
   });
 
   /* Nav sticky dapat bayangan saat halaman di-scroll (kelas .header--scrolled).
