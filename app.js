@@ -10,41 +10,17 @@ const FALLBACK_IMG = 'asset/ikan-gurame-bakar.jpg';
 
 const categoriesData = [
   { id: 'semua', label: 'Semua' },
-  { id: 'air-tawar', label: 'Ikan Air Tawar' },
-  { id: 'laut', label: 'Ikan Laut' },
+  { id: 'air-tawar', label: 'Ikan Bakar Air Tawar' },
+  { id: 'laut', label: 'Ikan Bakar Laut' },
 ];
 
 const heroData = {
-  titleA: 'Ikan Bakar &ldquo;Segar&rdquo;',
+  titleA: 'Ikan Bakar &ldquo;Segar 99&rdquo;',
   titleB: 'Setiap Hari.',
   description:
-    'Dibakar di atas arang batok dengan bumbu rempah khas Nusantara. Pilih gurame, mujaer, kakap, atau kerapu favoritmu. Level pedas bebas request.',
+    'Dibakar di atas api dengan bumbu rempah khas Nusantara. Pilih gurame, mujaer, kakap, atau kerapu favoritmu. Level pedas bebas request.',
   image: 'asset/ikan-gurame-bakar.jpg',
 };
-
-const bannersData = [
-  {
-    id: 'b1',
-    tag: 'Ikan Utuh',
-    title: 'Ikan Gurame Bakar',
-    desc: 'Ikan utuh dibakar bumbu kecap, sambal bebas pilih.',
-    image: 'asset/ikan-gurame-bakar.jpg',
-  },
-  {
-    id: 'b2',
-    tag: 'Manis Gurih',
-    title: 'Ikan Kerapu Bakar Manis Pedas',
-    desc: 'Daging kenyal juicy, bumbu meresap pekat.',
-    image: 'asset/ikan-kerapu-bakar-manis-pedas.jpg',
-  },
-  {
-    id: 'b3',
-    tag: 'Bebas Request',
-    title: 'Ikan Mujaer Bakar Manis Pedas',
-    desc: 'Tiga sambal dalam satu mangkok.',
-    image: 'asset/ikan-mujaer-bakar-manis-pedas.jpg',
-  },
-];
 
 const tutorialData = [
   {
@@ -76,90 +52,90 @@ const soldOutIds = [];
 /* Jam buka: 08.00-18.00 WIB setiap hari (buka jam 8, tutup jam 6).
    Satu config ini dipakai status hero, kartu lokasi, dan
    catatan checkout. Kalau jam berubah, ubah di sini saja. */
-const locationData = {  name: 'Ikan Bakar Segar Ciomas',
+const locationData = {
+  name: 'Ikan Bakar Segar Ciomas',
   address: 'Jl. Cemara VIII No.14 Blok A, Pagelaran, Kec. Ciomas, Kota Bogor 16610',
   hours: { open: '08:00', close: '18:00', label: 'Buka setiap hari · 08.00-18.00 WIB' },
-  phone: '0877-7437-5755',
-  whatsapp: '6287774375755',
+  phone: '0812-9433-3260',
+  whatsapp: '6281294333260',
   note: 'Klik "Petunjuk Arah" untuk rute tercepat dari lokasimu.',
   query: 'Ikan Bakar Segar Ciomas, Jl. Cemara VIII, Ciomas, Bogor',
 };
 
+/* Outlet kedua: foodcourt Kemdikbudristek, Jakarta Pusat. Tidak punya jam
+   buka & nomor sendiri, jadi baris itu tidak ditampilkan (biar tidak mengarang). */
+const jakartaLocation = {
+  name: 'Kantin Bogasera · Kemdikbudristek',
+  address: 'Jl. Jend. Sudirman No.RT.01/RW.03, Gelora, Tanah Abang, Jakarta Pusat 10270',
+  hours: { open: '09:00', close: '14:00', label: 'Senin-Jumat · 09.00-14.00 WIB (kecuali hari libur)' },
+  note: 'Makan di tempat di area foodcourt Kemdikbudristek, Jakarta Pusat.',
+  query: 'Kantin Bogasera Kemdikbudristek, Jl. Jenderal Sudirman, Tanah Abang, Jakarta',
+};
+
 const menuIkanBakarData = [
   {
-    id: 'g-gurame', name: 'Ikan Gurame Bakar', category: 'air-tawar',
-    time: '25-30 mnt', weight: '±600 gr / ekor',
-    spiceTag: 'Bumbu Kecap', badge: null,
+    id: 'g-gurame', name: 'Gurame Goreng', category: 'air-tawar',
+    spiceTag: 'Bumbu Kecap',
     image: 'asset/ikan-gurame-bakar.jpg',
-    description: 'Gurame utuh dibakar dengan olesan bumbu kecap gurih yang dikaramelisasi di atas bara. Disajikan dengan sambal dabu-dabu, sambal merah, timun, dan kemangi segar.',
+    description: 'Gurame utuh dibakar dengan olesan bumbu kecap gurih yang dikaramelisasi di atas api. Disajikan dengan sambal dabu-dabu, sambal merah, timun, dan kemangi segar.',
   },
   {
     id: 'g-gurame-mp', name: 'Ikan Gurame Bakar Manis Pedas', category: 'air-tawar',
-    time: '25-30 mnt', weight: '±600 gr / ekor',
-    spiceTag: 'Bumbu Manis Pedas', badge: null,
+    spiceTag: 'Bumbu Manis Pedas',
     image: 'asset/ikan-gurame-bakar-manis-pedas.jpg',
     description: 'Gurame utuh berbalut bumbu manis pedas yang meresap hingga ke daging. Dilengkapi mangkok tiga sekat berisi sambal dabu-dabu, sambal kecap, dan sambal terasi plus lalapan.',
   },
   {
     id: 'g-mujaer', name: 'Ikan Mujaer Bakar Manis Pedas', category: 'air-tawar',
-    time: '20-25 mnt', weight: '±400 gr / ekor',
-    spiceTag: 'Bumbu Manis Pedas', badge: 'Pedas',
+    spiceTag: 'Bumbu Manis Pedas',
     image: 'asset/ikan-mujaer-bakar-manis-pedas.jpg',
     description: 'Mujaer segar berbalut bumbu manis pedas yang meresap hingga ke daging. Disajikan dengan mangkok tiga sekat berisi sambal dabu-dabu, sambal kecap, dan sambal terasi.',
   },
   {
     id: 'g-mujair', name: 'Ikan Mujair Bakar', category: 'air-tawar',
-    time: '20 mnt', weight: '±400 gr / ekor',
-    spiceTag: 'Bumbu Kecap', badge: null,
+    spiceTag: 'Bumbu Kecap',
     image: 'asset/ikan-mujair-bakar.jpg',
     description: 'Mujair dibakar dengan bumbu kecap hitam mengilap yang lengket manis di kulitnya. Cocok pencinta ikan gurih-gelap, disajikan dengan sambal dabu-dabu, timun, kemangi, dan jeruk nipis.',
   },
   {
     id: 'g-mujair-goreng', name: 'Ikan Mujair Goreng', category: 'air-tawar',
-    time: '15-20 mnt', weight: '±400 gr / ekor',
-    spiceTag: 'Bumbu Ungkep', badge: null,
+    spiceTag: 'Bumbu Ungkep',
     image: 'asset/ikan-mujair-goreng.jpg',
     description: 'Mujair digoreng garing renyah sampai tulangnya ikut renyah. Disajikan dengan sambal dabu-dabu, sambal merah, irisan timun, kemangi, dan jeruk nipis.',
   },
   {
     id: 'l-bawal', name: 'Bawal Laut Bakar Manis Pedas', category: 'laut',
-    time: '20-25 mnt', weight: '±350 gr / ekor',
-    spiceTag: 'Bumbu Manis Pedas', badge: null,
+    spiceTag: 'Bumbu Manis Pedas',
     image: 'asset/bawal-laut-bakar-manis-pedas.jpg',
     description: 'Bawal pipih berdaging tebal dengan olesan bumbu manis pedas yang garing karamel. Disertai lalapan segar, sambal dabu-dabu, sambal terasi, dan jeruk nipis.',
   },
   {
-    id: 'l-kembung', name: 'Ikan Kembung Bakar', category: 'laut',
-    time: '20 mnt', weight: '±300 gr / ekor',
-    spiceTag: 'Bumbu Kecap', badge: null,
+    id: 'l-kembung', name: 'Kembung Bakar', category: 'laut',
+    spiceTag: 'Bumbu Kecap',
     image: 'asset/ikan-kembung-bakar.jpg',
     description: 'Kembung segar dibakar bumbu kecap dengan aroma bakaran yang wangi. Dagingnya padat dan manis, disajikan dengan sambal dabu-dabu, timun, selada, dan jeruk nipis.',
   },
   {
     id: 'l-ikuwe', name: 'Ikan Kuwe Bakar', category: 'laut',
-    time: '20 mnt', weight: '±400 gr / ekor',
-    spiceTag: 'Bumbu Kecap', badge: null,
+    spiceTag: 'Bumbu Kecap',
     image: 'asset/ikan-kuwe-bakar.jpg',
     description: 'Kuwe hasil tangkapan nelayan dibakar dengan olesan kecap gurih. Dagingnya padat dan manis, disajikan dengan sambal dabu-dabu, sambal merah, kemangi, dan timun segar.',
   },
   {
     id: 'l-kuwe-mp', name: 'Kuwe Bakar Pedas Manis', category: 'laut',
-    time: '20-25 mnt', weight: '±350 gr / ekor',
-    spiceTag: 'Bumbu Manis Pedas', badge: null,
+    spiceTag: 'Bumbu Manis Pedas',
     image: 'asset/kuwe-bakar-pedas-manis.jpg',
     description: 'Kuwe pipih berbumbu manis pedas dengan lapisan karamel yang gurih. Dilengkapi sambal dabu-dabu, sambal merah, selada, timun, dan jeruk nipis.',
   },
   {
-    id: 'l-kakap', name: 'Kakap Original', category: 'laut',
-    time: '25-30 mnt', weight: '±500 gr / ekor',
-    spiceTag: 'Bumbu Bakar Original', badge: null,
+    id: 'l-kakap', name: 'Kakap Bakar', category: 'laut',
+    spiceTag: 'Bumbu Bakar Original',
     image: 'asset/kakap-original.jpg',
-    description: 'Kakap dibakar polos di atas bara tanpa baluran bumbu tebal, jadi rasa manis alami dagingnya yang menonjol. Disajikan dengan sambal bawang, sambal dabu-dabu, timun, kemangi, dan jeruk nipis.',
+    description: 'Kakap dibakar polos di atas api tanpa baluran bumbu tebal, jadi rasa manis alami dagingnya yang menonjol. Disajikan dengan sambal bawang, sambal dabu-dabu, timun, kemangi, dan jeruk nipis.',
   },
   {
     id: 'l-kerapu', name: 'Ikan Kerapu Bakar Manis Pedas', category: 'laut',
-    time: '30 mnt', weight: '±600 gr / ekor',
-    spiceTag: 'Bumbu Manis Pedas', badge: null,
+    spiceTag: 'Bumbu Manis Pedas',
     image: 'asset/ikan-kerapu-bakar-manis-pedas.jpg',
     description: 'Kerapu berdaging kenyal juicy dengan baluran bumbu pekat manis pedas. Disajikan mewah dengan dua mangkok sambal: terasi dan dabu-dabu segar.',
   },
@@ -272,7 +248,7 @@ function renderHero() {
   const hero = $('#heroSection');
   hero.innerHTML = `
     <div class="hero__content">
-      <p class="hero__eyebrow">Ikan Bakar Arang &middot; Ciomas, Bogor</p>
+      <p class="hero__eyebrow">Ikan Bakar Dadakan &middot; Ciomas, Bogor</p>
       <h1 class="hero__title">${heroData.titleA} <em>${heroData.titleB}</em></h1>
       <p class="hero__desc">${heroData.description}</p>
       <p class="hero__status${isOpenNow() ? '' : ' hero__status--closed'}" id="heroStatus"><span class="hero__dot" aria-hidden="true"></span>${openStatusText()}</p>
@@ -295,63 +271,70 @@ function startStatusTicker() {
   setInterval(apply, 30000);
 }
 
-/* ---------------- Render: banners ---------------- */
-function renderBanners() {
-  const track = $('#bannerTrack');
-  track.innerHTML = bannersData
-    .map(
-      (b) => `
-    <button class="promo-card is-loading" type="button" role="listitem" data-banner="${b.id}">
-      <img class="promo-card__img" src="${b.image}" alt="${b.title}" loading="lazy" onload="this.parentElement.classList.remove('is-loading')" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'" />
-      <span class="promo-card__shade" aria-hidden="true"></span>
-      <span class="promo-card__body">
-        <span class="promo-card__tag">${b.tag}</span>
-        <span class="promo-card__name">${b.title}</span>
-        <span class="promo-card__desc">${b.desc}</span>
-      </span>
-    </button>`
-    )
-    .join('');
-}
-
 /* ---------------- Render: location ---------------- */
 function renderLocation() {
   const section = $('#lokasi');
-  const q = encodeURIComponent(locationData.query);
-  const embedSrc = `https://www.google.com/maps?q=${q}&output=embed`;
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${q}`;
-  const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
-  section.innerHTML = `
-    <div class="location__head">
-      <h2 class="location__title">Kunjungi Warung Kami</h2>
-      <p class="location__sub">Makan di tempat lebih nikmat, ikan dibakar dadakan di atas bara</p>
-    </div>
-    <div class="location__grid">
-      <div class="location__map">
-        <iframe class="location__frame" src="${embedSrc}" title="Peta lokasi ${locationData.name}"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-      </div>
+
+  const pinIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-10a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>';
+  const clockIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>';
+  const phoneIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>';
+  const takeawayIcon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>';
+  const dineInIcon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7a3 3 0 0 0 6 0V2"></path><path d="M6 2v20"></path><path d="M18 2c-1.7 0-3 1.8-3 4s1.3 4 3 4v12"></path><path d="M18 2v8"></path></svg>';
+
+  const locations = [
+    {
+      heading: 'Hubungi Kami',
+      name: locationData.name,
+      badge: 'Khusus Takeaway',
+      badgeIcon: takeawayIcon,
+      info: 'Bisa dibungkus untuk dibawa pulang &mdash; pesan dulu lewat WhatsApp supaya tinggal ambil.',
+      rows: [
+        `${pinIcon}<span>${locationData.address}</span>`,
+        `${clockIcon}<span>${locationData.hours.label} · <strong id="openStatusInline">${openStatusText()}</strong></span>`,
+        `${phoneIcon}<a class="location__link" href="tel:+${locationData.whatsapp}">${locationData.phone}</a>`,
+      ],
+      note: locationData.note,
+      query: locationData.query,
+    },
+    {
+      heading: 'Kunjungi Foodcourt Kami',
+      name: jakartaLocation.name,
+      badge: 'Dine In',
+      badgeIcon: dineInIcon,
+      info: jakartaLocation.note,
+      rows: [
+        `${pinIcon}<span>${jakartaLocation.address}</span>`,
+        `${clockIcon}<span>${jakartaLocation.hours.label}</span>`,
+      ],
+      note: 'Klik "Petunjuk Arah" untuk rute tercepat dari lokasimu.',
+      query: jakartaLocation.query,
+    },
+  ];
+
+  const cards = locations
+    .map((loc) => {
+      const q = encodeURIComponent(loc.query);
+      const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${q}`;
+      const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
+      return `
       <div class="location__card">
-        <h3 class="location__name">${locationData.name}</h3>
-        <p class="location__row">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-10a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <span>${locationData.address}</span>
-        </p>
-        <p class="location__row">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-          <span>${locationData.hours.label} · <strong id="openStatusInline">${openStatusText()}</strong></span>
-        </p>
-        <p class="location__row">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <a class="location__link" href="tel:+${locationData.whatsapp}">${locationData.phone}</a>
-        </p>
-        <p class="location__note">${locationData.note}</p>
+        <h2 class="location__title">${loc.heading}</h2>
+        <div class="location__name-row">
+          <p class="location__name">${loc.name}</p>
+          <span class="location__badge">${loc.badgeIcon}${loc.badge}</span>
+        </div>
+        <p class="location__info">${loc.info}</p>
+        ${loc.rows.map((row) => `<p class="location__row">${row}</p>`).join('')}
+        <p class="location__note">${loc.note}</p>
         <div class="location__actions">
           <a class="location__btn location__btn--primary" href="${mapsUrl}" target="_blank" rel="noopener">Buka di Google Maps</a>
           <a class="location__btn" href="${dirUrl}" target="_blank" rel="noopener">Petunjuk Arah</a>
         </div>
-      </div>
-    </div>`;
+      </div>`;
+    })
+    .join('');
+
+  section.innerHTML = `<div class="location__grid">${cards}</div>`;
 }
 
 /* ---------------- Render: tutorial ---------------- */
@@ -395,16 +378,10 @@ function cardHTML(p) {
   <article class="card${soldOut ? ' card--soldout' : ''}" tabindex="0" role="button" aria-label="Lihat ${p.name}${soldOut ? ' (habis hari ini)' : ''}" data-product="${p.id}" aria-disabled="${soldOut}">
     <div class="card__media is-loading">
       <img class="card__img" src="${p.image}" alt="${p.name}, ikan bakar segar di Ciomas, Bogor" width="420" height="560" loading="lazy" decoding="async" onload="this.parentElement.classList.remove('is-loading')" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'" />
-      ${soldOut ? `<span class="card__fav card__fav--soldout">Habis</span>` : (p.badge ? `<span class="card__fav">${p.badge}</span>` : '')}
-      <span class="card__spice">${p.spiceTag}</span>
+      ${soldOut ? `<span class="card__fav card__fav--soldout">Habis</span>` : ''}
     </div>
     <div class="card__body">
       <h3 class="card__name">${p.name}</h3>
-      <div class="card__meta">
-        <span>${p.time}</span>
-        <span aria-hidden="true">·</span>
-        <span>${p.weight}</span>
-      </div>
       <div class="card__foot">
         <button class="card__add" type="button" data-add="${p.id}"${soldOut ? ' disabled' : ''}>${soldOut ? 'Habis' : '+ Tambah'}</button>
       </div>
@@ -512,8 +489,6 @@ function openModal(productId) {
   $('#modalCat').textContent = `${categoryLabel(p.category)} · ${p.spiceTag}`;
   $('#modalName').textContent = p.name;
   $('#modalPortion').textContent = '1 ekor utuh';
-  $('#modalTime').textContent = `Bakar ${p.time}`;
-  $('#modalWeight').textContent = p.weight;
   $('#modalDesc').textContent = p.description;
 
   updateModalFooter();
@@ -594,7 +569,9 @@ function closeCart() {
 function bindEvents() {
   const syncSearch = (value, source) => {
     state.searchQuery = value;
-    $('#searchClear').hidden = value.trim() === '';
+    const hasValue = value.trim() !== '';
+    $('#searchClear').hidden = !hasValue;
+    $('#searchClearMobile').hidden = !hasValue;
     const other = source === 'desktop' ? $('#searchInputMobile') : $('#searchInput');
     if (other && other.value !== value) other.value = value;
     renderCatalog();
@@ -608,6 +585,12 @@ function bindEvents() {
     syncSearch('', 'desktop');
     $('#searchInput').focus();
   });
+  $('#searchClearMobile').addEventListener('click', () => {
+    $('#searchInput').value = '';
+    $('#searchInputMobile').value = '';
+    syncSearch('', 'mobile');
+    $('#searchInputMobile').focus();
+  });
 
   $('#emptyReset').addEventListener('click', () => {
     state.searchQuery = '';
@@ -615,6 +598,7 @@ function bindEvents() {
     $('#searchInput').value = '';
     $('#searchInputMobile').value = '';
     $('#searchClear').hidden = true;
+    $('#searchClearMobile').hidden = true;
     renderCategories();
     renderCatalog();
   });
@@ -625,20 +609,6 @@ function bindEvents() {
     state.activeCategory = btn.dataset.category;
     renderCategories();
     renderCatalog();
-  });
-
-  $('#bannerTrack').addEventListener('click', (e) => {
-    const card = e.target.closest('[data-banner]');
-    if (!card) return;
-    state.activeCategory = 'semua';
-    state.searchQuery = '';
-    $('#searchInput').value = '';
-    $('#searchInputMobile').value = '';
-    $('#searchClear').hidden = true;
-    renderCategories();
-    renderCatalog();
-    $('#catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    showToast('Lihat semua menu ikan bakar di bawah');
   });
 
   $('#catalog').addEventListener('click', (e) => {
@@ -757,17 +727,25 @@ function bindEvents() {
     showToast(`Pesanan ${count} item diteruskan ke WhatsApp. Pesan GoSend untuk pengambilan!`);
   });
 
-  $('#locationBtn').addEventListener('click', () => {
-    const q = encodeURIComponent(locationData.query);
-    window.open(`https://www.google.com/maps/search/?api=1&query=${q}`, '_blank', 'noopener');
-  });
-
-  /* Nav sticky dapat bayangan saat halaman di-scroll (kelas .header--scrolled). */
+  /* Nav sticky dapat bayangan saat halaman di-scroll (kelas .header--scrolled).
+     Tinggi header juga dipublikasikan ke CSS (--header-h) supaya filter
+     kategori sticky selalu menempel tepat di bawah header, termasuk di HP
+     saat baris search ikut tampil. */
   const stickyHeader = $('#topHeader');
   if (stickyHeader) {
     const syncHeaderShadow = () => stickyHeader.classList.toggle('header--scrolled', window.scrollY > 8);
     window.addEventListener('scroll', syncHeaderShadow, { passive: true });
     syncHeaderShadow();
+
+    const syncHeaderHeight = () => {
+      document.documentElement.style.setProperty('--header-h', `${stickyHeader.offsetHeight}px`);
+    };
+    syncHeaderHeight();
+    window.addEventListener('resize', syncHeaderHeight);
+    window.addEventListener('load', syncHeaderHeight);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncHeaderHeight).catch(() => {});
+    }
   }
 
   document.addEventListener('keydown', (e) => {
@@ -788,7 +766,6 @@ function init() {
     bindEvents();
     syncStaticWaLinks();
     renderHero();
-    renderBanners();
     renderCategories();
     renderCatalog();
     renderLocation();

@@ -124,38 +124,6 @@ textarea:focus-visible,
 .header__brand-name { font-weight: 700; font-size: 19px; letter-spacing: 0.2px; }
 .header__brand-sub { font-weight: 300; font-size: 12px; color: var(--color-muted); }
 
-.header__location {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #fff;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-pill);
-  padding: 8px 14px;
-  max-width: 260px;
-  text-align: left;
-  color: var(--color-ink);
-  box-shadow: 0 2px 8px rgba(46, 18, 8, 0.05);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
-}
-
-.header__location:hover {
-  border-color: var(--color-primary);
-  box-shadow: 0 6px 16px rgba(192, 57, 43, 0.14);
-  transform: translateY(-1px);
-}
-.header__location-icon { color: var(--color-primary); flex-shrink: 0; }
-.header__location-text { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
-.header__location-label { font-size: 11px; font-weight: 300; color: var(--color-muted); }
-.header__location-value {
-  font-size: 13px;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 170px;
-}
-
 .search {
   position: relative;
   flex: 1;
@@ -401,68 +369,10 @@ textarea:focus-visible,
   .platform__logo { height: 16px; }
 }
 
-/* ---------- Promo ---------- */
-.promo { margin-top: 26px; }
-.promo__head { margin: 4px 2px 12px; }
-.promo__title { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: 0.1px; }
-.promo__sub { margin: 2px 0 0; font-size: 13.5px; font-weight: 300; color: var(--color-muted); }
-
-.promo__track {
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  padding: 4px 2px 10px;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-}
-.promo__track::-webkit-scrollbar { display: none; }
-
-.promo-card {
-  position: relative;
-  flex: 0 0 min(340px, 82vw);
-  height: 148px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: none;
-  padding: 0;
-  text-align: left;
-  color: #fff;
-  box-shadow: var(--shadow-card);
-}
-
-.promo-card__img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 65%;
-}
-
-.promo-card__shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, rgba(46, 18, 8, 0.82) 20%, rgba(46, 18, 8, 0.4) 60%, rgba(46, 18, 8, 0.05) 100%);
-}
-
-.promo-card__body { position: relative; padding: 18px; display: flex; flex-direction: column; gap: 4px; height: 100%; justify-content: center; }
-.promo-card__tag {
-  align-self: flex-start;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  background: var(--color-ember);
-  border-radius: var(--radius-pill);
-  padding: 3px 10px;
-}
-.promo-card__name { margin: 4px 0 0; font-size: 18px; font-weight: 600; }
-.promo-card__desc { margin: 0; font-size: 13px; font-weight: 300; opacity: 0.92; }
-
 /* ---------- Category ---------- */
 .category {
   position: sticky;
-  top: 75px;
+  top: var(--header-h, 75px);
   z-index: 30;
   background: var(--color-cream);
   padding: 12px 0 6px;
@@ -501,16 +411,14 @@ textarea:focus-visible,
 .section__sub { margin: 2px 0 0; font-size: 13px; font-weight: 300; color: var(--color-muted); }
 
 /* Aksen bilah gradien di kiri judul section — ritme visual seragam
-   di promo, katalog, cara pesan, dan lokasi. */
+   di katalog, cara pesan, dan lokasi. */
 .section__title,
-.promo__title,
 .location__title,
 .tutorial__title {
   position: relative;
   padding-left: 15px;
 }
 .section__title::before,
-.promo__title::before,
 .location__title::before,
 .tutorial__title::before {
   content: '';
@@ -524,8 +432,6 @@ textarea:focus-visible,
   background: linear-gradient(180deg, var(--color-primary), var(--color-ember));
 }
 .section__sub,
-.promo__sub,
-.location__sub,
 .tutorial__sub { margin-left: 15px; }
 
 .section__nav { display: flex; gap: 8px; }
@@ -580,8 +486,7 @@ textarea:focus-visible,
 
 /* Skeleton shimmer: menutupi area foto selagi gambar dimuat (lazy load),
    hilang otomatis saat <img> selesai dimuat (class is-loading dilepas). */
-.card__media.is-loading::after,
-.promo-card.is-loading::after {
+.card__media.is-loading::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -602,21 +507,8 @@ textarea:focus-visible,
   color: var(--color-primary-dark);
 }
 
-.card__spice {
-  position: absolute;
-  left: 8px;
-  bottom: 8px;
-  background: rgba(34, 34, 34, 0.85);
-  border-radius: var(--radius-pill);
-  font-size: 11px;
-  font-weight: 400;
-  padding: 3px 10px;
-  color: #fff;
-}
-
 .card__body { padding: 12px 12px 13px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
 .card__name { margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 39px; }
-.card__meta { display: flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 300; color: var(--color-muted); }
 .card__foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 6px; }
 
 .card__add {
@@ -640,26 +532,13 @@ textarea:focus-visible,
 
 /* ---------- Location ---------- */
 .location { margin-top: 30px; scroll-margin-top: 130px; }
-.location__head { margin: 4px 2px 14px; }
-.location__title { margin: 0; font-size: 22px; font-weight: 600; }
-.location__sub { margin: 2px 0 0; font-size: 13.5px; font-weight: 300; color: var(--color-muted); }
+.location__title { margin: 0; font-size: 19px; font-weight: 600; }
 
 .location__grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 14px;
 }
-
-.location__map {
-  background: #fff;
-  border: 1px solid rgba(236, 229, 216, 0.7);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-  min-height: 320px;
-}
-
-.location__frame { width: 100%; height: 100%; min-height: 320px; border: 0; display: block; }
 
 .location__card {
   background: #fff;
@@ -669,14 +548,32 @@ textarea:focus-visible,
   padding: 22px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
-.location__name { margin: 0; font-size: 19px; font-weight: 600; }
+.location__name-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+.location__name { margin: 0; font-size: 15px; font-weight: 500; color: var(--color-muted); }
+.location__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid rgba(192, 57, 43, 0.22);
+  border-radius: var(--radius-pill);
+  background: rgba(192, 57, 43, 0.07);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.location__info { margin: 10px 0 0; font-size: 13.5px; font-weight: 300; color: var(--color-ink); }
 .location__row { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0 0; font-size: 14px; font-weight: 300; }
 .location__row svg { flex-shrink: 0; margin-top: 3px; color: var(--color-primary); }
 .location__note { margin: 12px 0 0; font-size: 13px; font-weight: 300; color: var(--color-muted); }
-.location__actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.location__actions { display: flex; gap: 10px; margin-top: auto; padding-top: 18px; flex-wrap: wrap; }
 
 .location__btn {
   flex: 1;
@@ -1033,29 +930,40 @@ textarea:focus-visible,
 }
 
 @media (max-width: 860px) {
-  .header__location-value { max-width: 110px; }
   /* Hero di mobile: banner dengan scrim vertikal, teks di bawah supaya
      ikan di bagian atas foto tetap terlihat dan teks tetap kontras. */
   .hero { align-items: flex-end; min-height: 440px; background-position: 68% center; }
   .hero::before { background: linear-gradient(180deg, rgba(26, 16, 11, 0) 0%, rgba(26, 16, 11, 0.12) 28%, rgba(26, 16, 11, 0.7) 60%, rgba(26, 16, 11, 0.92) 100%); }
   .hero__content { flex: 1 1 100%; justify-content: flex-end; padding: 28px 22px; }
   .location__grid { grid-template-columns: 1fr; }
-  .location__frame { min-height: 260px; }
   .steps { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 720px) {
-  .header__inner { flex-wrap: wrap; }
-  .header__logo { width: 48px; height: 48px; }
+  /* Header mobile: brand + keranjang dalam satu baris, search di bawahnya
+     supaya tombol keranjang tidak terdorong turun. */
+  .header__inner { flex-wrap: nowrap; padding: 10px 14px; gap: 10px; }
+  .header__logo { width: 42px; height: 42px; }
+  .header__brand { flex: 1 1 auto; min-width: 0; gap: 8px; }
+  .header__brand-text { min-width: 0; }
+  .header__brand-name { font-size: 17px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .header__brand-sub { font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .header__search { display: none; }
   .header__wa { display: none; }
-  .header__search-mobile { display: flex; padding: 0 16px 12px; }
-  .header__location { max-width: none; flex: 1; }
-  .category { top: 62px; }
+  .header__cart { width: 40px; height: 40px; flex-shrink: 0; }
+  .header__cart svg { width: 18px; height: 18px; }
+  .header__search-mobile { display: flex; padding: 0 14px 10px; }
+  .header__search-mobile .search__icon { left: 12px; width: 16px; height: 16px; }
+  .header__search-mobile .search__input {
+    padding: 7px 36px 7px 38px;
+    font-size: 16px;
+    line-height: 1.2;
+    box-shadow: none;
+  }
+  .header__search-mobile .search__clear { right: 6px; width: 24px; height: 24px; }
   .main { padding: 14px 14px 6px; }
   .card { flex-basis: 168px; }
   .section__nav { display: none; }
-  .promo__title { font-size: 19px; }
   .hero__content { padding: 26px 20px; }
   .footer__copy { text-align: left; }
   .steps { grid-template-columns: 1fr; }
