@@ -194,11 +194,11 @@ const openStatusText = () =>
              protokol `whatsapp://send` yang langsung membuka aplikasi. */
 const waLink = (text) => {
   const phone = locationData.whatsapp;
-  const body = encodeURIComponent(text);
   const isMobile = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const query = text ? `?text=${encodeURIComponent(text)}` : '';
   return isMobile
-    ? `https://wa.me/${phone}?text=${body}`
-    : `whatsapp://send?phone=${phone}&text=${body}`;
+    ? `https://wa.me/${phone}${query}`
+    : `whatsapp://send?phone=${phone}${text ? `&text=${encodeURIComponent(text)}` : ''}`;
 };
 
 /* Link WhatsApp yang ditulis langsung di index.html (header, hero statis,
@@ -702,29 +702,14 @@ function bindEvents() {
       showToast('Keranjang masih kosong');
       return;
     }
-    const rule = '-'.repeat(38);
-    const lines = [
-      `Halo ${locationData.name}! Saya mau pesan:`,
-      '```', rule];
-    let num = 0;
-    state.cart.forEach((item) => {
-      const p = getProduct(item.productId);
-      if (!p) return;
-      num += 1;
-      lines.push(`${num}.  ${p.name}`, `    ${item.qty} ekor`, rule);
-    });
-    lines.push(`TOTAL ITEM: ${cartCount()}`, '```');
-    if (!isOpenNow()) {
-      lines.push(`Catatan: pesanan dibuat di luar jam buka (${locationData.hours.label}). Mohon konfirmasi ketersediaan saat warung buka.`);
-    }
-    lines.push('Terima kasih!');
-    const waUrl = waLink(lines.join('\n'));
+    /* Buka chat WhatsApp tanpa teks pesan otomatis — pelanggan menulis sendiri. */
+    const waUrl = waLink('');
     const count = cartCount();
     window.open(waUrl, '_blank', 'noopener');
     state.cart.clear();
     renderCart();
     closeCart();
-    showToast(`Pesanan ${count} item diteruskan ke WhatsApp. Pesan GoSend untuk pengambilan!`);
+    showToast(`Keranjang ${count} item dikosongkan. Lanjutkan pesan di WhatsApp.`);
   });
 
   /* Nav sticky dapat bayangan saat halaman di-scroll (kelas .header--scrolled).
